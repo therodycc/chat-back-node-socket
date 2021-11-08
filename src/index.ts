@@ -2,10 +2,8 @@ import express, { Application, urlencoded } from "express";
 import cors from "cors";
 import http from 'http';
 import socket_io from "socket.io";
+import chatRouter from "./routes/chat.router";
 // routes
-
-
-
 
 class Server {
     public app: Application;
@@ -24,7 +22,7 @@ class Server {
     }
 
     routes(): void {
-
+        this.app.use('/', chatRouter)
     }
 
     start() {
@@ -34,7 +32,6 @@ class Server {
         const server = http.createServer(this.app);
         const io = socket_io.Server;
 
-        
     }
 }
 
